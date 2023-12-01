@@ -1,0 +1,99 @@
+[Q1]
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+// Accept two number from user and do the sum of it
+namespace ConsoleApp8
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+           String num1, num2;
+            int a;
+            int b;
+            Console.WriteLine("Enter number1: ");
+           num1= Console.ReadLine();
+            Console.WriteLine("Enter a number2: ");
+            num2 = Console.ReadLine();
+            a = int.Parse(num1);
+            b = int.Parse(num2);
+            Console.WriteLine("Result= {0}",a+b);
+        }
+    }
+}
+---------------------------------------------------------------------------------------------
+[Q2]
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+/*Accept a float value and print square of that number
+Solve above code using Parse(), ToSingle() and TryPrase() method.
+Also observe exception if you do not enter valid data*/
+
+namespace ConsoleApp9
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            String s1=Console.ReadLine();
+            float num1 = float.Parse(s1);
+            Console.WriteLine("using parse Square= " + num1 * num1);
+            float f1;
+            //using tryparse
+            bool b1 = float.TryParse(s1,out f1);
+            if (b1)
+            {
+                Console.WriteLine("using tryparse Square= "+f1*f1);
+            }
+            //using Tosingle
+           float ff1 = Convert.ToSingle(s1);
+            Console.WriteLine("using to single::: square of num={0}",ff1*ff1);
+
+        }
+    }
+}
+--------------------------------------------------------------------------------------------
+[Q3]
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+//Create a class calculator and write 3 instance method square, cube, round[if in put 22.5 o/p 22]
+//Which will return square .cube and rounded number.
+//Create object and call method and print the result.
+namespace ConsoleApp10
+{
+    internal class Calculator
+    {
+        static void Main(string[] args)
+        {
+            String str1=Console.ReadLine();
+            int num1;
+            float f = Convert.ToSingle(str1);
+            float sq=Square(f);
+            Console.WriteLine("Square of given number: "+sq);
+            Console.WriteLine("cube= {0}",cube(f));
+            Console.WriteLine("Round off of num : {0}",round(f));
+        }
+        public static float Square(float a)
+        {
+            return a * a;
+        }
+        public static float cube(float b)
+        {
+            return b * b * b;
+        }
+        public static int round(float f)
+        {
+            return Convert.ToInt32(f);
+        }
+    }
+}
