@@ -1,0 +1,86 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace ConsoleApp6
+{
+    internal class Employee
+    {
+        String  name;
+        double salary;
+        int id;
+        double netSalary;
+        static int TDS;
+        public static int count=0;
+        static Employee()
+        {
+            Console.WriteLine("Vita global pvt ltd");
+        }
+        public Employee(String na,double sal,int i)
+        {
+            if (count == 3)
+            {
+                throw new Exception("cannot create more than four object");
+            }
+        else
+             count++;
+            Name = na;
+            Salary = sal;
+            this.id = i;
+        }
+
+
+        public int Id
+        {
+            get { return id; }
+        }
+        public String Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        public double Salary
+        {
+            get { return salary; }
+            set
+            {
+                if (value>0 && value<50000)
+                {
+                    salary = value;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid salary Input");
+                }
+            }
+        }
+        public double deduct(double salary)
+        {
+            netSalary = salary - 0.1 * salary;
+            double taxamount = salary - netSalary;
+            return taxamount;
+        }
+        public override string ToString()
+        {
+            return String.Format("name={0} id={1} salary={2}",name,id,salary);
+        }
+    }
+    class myclass
+    {
+
+        public static void Main()
+        {
+            Employee emp = new Employee("Raj1", 50, 101);
+            Employee emp1 = new Employee("Raj2", 51, 106);
+            Employee emp2 = new Employee("Raj3", 52, 107);
+            double taxanou=emp.deduct(20);
+            Console.WriteLine("tax amount is: "+taxanou);
+            Console.WriteLine(emp);
+            Console.WriteLine(emp1);
+            Console.WriteLine(emp2);
+        }
+    }
+}
