@@ -1,0 +1,214 @@
+Q.create a class student with member variable name, maths, science, eng 
+Create a method which will return total marks[300]
+Create a method which will display name and total
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    internal class student
+    {
+        private string name;
+        private int maths;
+        private int science;
+        private int eng;
+        int total;
+        public void totalmarks(int x,int y,int z)
+        {
+            maths = x;
+            science = y;
+            eng = z;
+            total = x + y + z;
+            /*Console.WriteLine(total);*/
+        }
+        public void disp(string s)
+
+        {
+            name = s;
+            Console.WriteLine(name);
+            Console.WriteLine(total);
+        }
+
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            student s1=new student();
+            s1.totalmarks(100,100,100);
+            s1.disp("Raj");
+
+        }
+    }
+}
+
+Qcreate a class account having member name , id, balance
+Create a method -public void deposit(int amt){ balance=balance+amt}
+Create a method withdraw  -public void withdraw(int amt){ balance=balance-amt}
+Create display method which will display name and balance.
+Create 2 object and do transaction. 
+
+
+internal class account
+    {
+        private string name;
+        private int id;
+        private int balance;
+        public void deposit(int amt)
+        {
+            balance = balance + amt;
+        }
+        public void withdraw(int amt)
+        {
+            balance = balance - amt;
+        }
+        public void disp(string n)
+        {
+            name = n;
+            Console.WriteLine(name);
+            Console.WriteLine(balance);
+        }
+
+    }
+    class demo
+    {
+        static void Main(string[] args)
+        {
+            account a = new account();
+            a.deposit(1000);
+            a.withdraw(345);
+            a.disp("RAj");
+            account b =new account();
+            b.deposit(1000);
+            b.withdraw(334);
+            b.disp("Shailesh");
+
+
+        }
+    }*/
+
+Q.Create class Employee with private vatiable id name salary, netsalary
+Create method public double Calculatesal()
+Which will return net salary. Netsalary= salary-salary*10%
+Create method display which will display Name and net salary.
+Create 3 object of a class and call display method.
+
+    class Employee
+    {
+        private int id;
+        private string name;
+        private int salary;
+        private double netsalary;
+        public Employee(int ID1,string n,int sal)
+        {
+
+            this.id = ID1;
+            this.name = n;
+            this.salary = sal;
+        }
+        
+        public double Calculatesal()
+        {
+            netsalary = salary - salary * 0.1;
+            return netsalary;
+        }
+        public void display()
+        {
+            Console.WriteLine(name);
+            Console.WriteLine(netsalary);
+
+        }
+
+    }
+}
+namespace std
+{
+    class Demo
+    {
+        static void Main(String[] args)
+        {
+            Employee e1 = new Employee(1,"Raj",129009);
+            Console.WriteLine(e1.Calculatesal());
+
+            e1.display();
+        }
+    }
+}
+
+Q.4 
+Create class Employee having member Id, Name, Salary,  NetSalary, Dept d
+Create enum Dept {MKT, ADMIN, ADV}
+Create method public double paytax(double p) {return tax amount and set netsalary(note: netsalary=salary-salary*p%)}
+Create method display to display name and netsalary and department
+When you load application it should print name of company.
+  new Employee(1,”Raj”,50000,Dept.MKT)
+
+    enum Dept 
+    { 
+        MKT,
+        ADMIN,
+        ADV
+    }
+    class Employee
+    {
+        private int id;
+        private string name;
+        private int salary;
+        private double netsalary;
+        Dept d;
+        static Employee()
+        {
+            Console.WriteLine("Raj Consultancy services");
+        }
+        public  double paytax(double p)
+        {
+            double taxamount = salary * 0.1;
+            netsalary = salary - salary * 0.1;
+            return taxamount;
+        }
+        public Employee(int ID1, string n, int sal, Dept s)
+        {
+
+            this.id = ID1;
+            this.name = n;
+            this.salary = sal;
+            this.d = s;
+        }
+
+       /* public double Calculatesal()
+        {
+            netsalary = salary - salary * 0.1;
+            return netsalary;
+        }*/
+        public void display()
+        {
+            Console.WriteLine(name);
+            Console.WriteLine(netsalary);
+            Console.WriteLine(Dept.MKT);
+            Console.WriteLine(paytax(9.0));
+
+        }
+
+    }
+}
+namespace std
+{
+    class Demo
+    {
+        static void Main(String[] args)
+        {
+            Employee e1 = new Employee(1, "Raj", 129009,Dept.ADMIN);
+/*            Console.WriteLine(e1.Calculatesal());
+*/
+            e1.display();
+        }
+    }
+}
+
+
+
+
