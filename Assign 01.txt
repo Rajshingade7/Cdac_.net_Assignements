@@ -1,0 +1,107 @@
+[Q1]
+namespace ConsoleApp3
+{
+    internal class Calculator
+    {
+        public int add(int a, int b)
+        {
+            return (a + b);
+        }
+        public int product(int a, int b)
+        {
+            return (a  b);
+        }
+    }
+    public class myclass
+    {
+        static void main()
+        {
+            Calculator c = new Calculator();
+            Console.WriteLine(Addition of two numbers=  + c.add(10, 20));
+        }
+    }
+}
+--------------------------------------------------------------------------------------------
+[Q2]
+----------(.net) library-----------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ClassLibrary4
+{
+    public class Class1
+    {
+        public int fact(int x)
+        {
+            int f = 1;
+            for(int i = 2; i <= x; i++)
+            {
+                f = f * i;
+            }
+            return f;
+        }
+    }
+}
+-----(console app)-----------
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ClassLibrary4;
+
+namespace ConsoleApp5
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Class1 c1 = new Class1();
+            int f1=c1.fact(10);
+            Console.WriteLine(f1); 
+        }
+    }
+}
+--------------------------------------------------------------------------------------------
+[Q3]
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+//Create a class student in namespace DAC and in namespace DBDA write method add in
+//both class. In entry point call both method
+
+namespace Dac
+{
+    internal class student
+    {
+        public void add(int a, int b)
+        {
+            int sum = a + b;
+            Console.WriteLine(sum);
+        }
+    }
+}
+namespace DBDA
+{
+    internal class student
+    {
+        void add(int a, int b)
+        {
+            int sum = a + b;
+            Console.WriteLine(sum);
+        }
+        public static void Main(String[] args)
+        {
+            student s = new student();
+            s.add(10, 20);
+            Dac.student s1 = new Dac.student();
+            s1.add(30, 40);
+        }
+    }
+}
