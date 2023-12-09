@@ -1,0 +1,67 @@
+using Microsoft.Extensions.Configuration;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp_ADO
+{
+    public class employee01
+    {
+        public string _connectionString;
+        public employee01(IConfiguration _iconfiguration) {
+            _connectionString = _iconfiguration.GetConnectionString("Default");
+        }
+        public void Employees()
+        {
+            using(SqlConnection con = new SqlConnection(_connectionString))
+            {
+                Console.WriteLine("hello");
+                SqlCommand cmd = new SqlCommand("select * from Employee",con);
+                con.Open();
+                Console.WriteLine("Connected");
+                SqlDataReader rdr = cmd.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    while (rdr.Read())
+                    {
+                        Console.WriteLine("{0}{1}{2}", rdr["Id"], rdr["Name"], rdr["Salary"]);
+                    }
+                }
+            }
+        }
+    }
+}
+
+using System;
+using ConsoleApp_ADO;
+using Microsoft.Extensions.Configuration;
+using System.IO;
+using ConsoleApp_ADO;
+namespace ConsoleApp_ADO1
+{
+    class Program
+    {
+        private static IConfiguration _iconfiguration;
+        static void Main(string[] args)
+        {
+            GetAppSettingFile();
+            Printproduct();
+        }
+        static void GetAppSettingFile()
+        {
+            var builder = new ConfigurationBuilder().
+                SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("Appsetting.json", optional: false, reloadOnChange: true);
+                _iconfiguration = builder.Build();
+        }
+        static void Printproduct()
+        {
+            employee01 obj = new employee01(_iconfiguration);
+            obj.Employees();
+
+        }
+    }
+}
