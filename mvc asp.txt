@@ -1,0 +1,33 @@
+How many design pattern is used in our question assignment
+Di
+For database dbcontext
+Enters the url in the 
+
+Model: Poco cla
+
+
+Create a poco class customer wtih id dob name age photo string url email
+photo which is string and stored in www.root
+remember boolean value
+Gender--dropdown
+Postalcode 
+mobile
+disable javascript on client side and rerun the application
+
+
+
+
+How to write custom middleware 
+Extension method
+Imiddleware
+
+
+
+Q.
+
+Create poco class user login having member Email password remember
+Create form using scoffold
+When user submit Onsubmit create cookie(cookie created written in message)
+Create action method readcookie which will display cookie data
+If you back to create(get) in the textbox it should display cookie
+When you go back to create within the text box it should display cookie value
