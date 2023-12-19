@@ -1,0 +1,58 @@
+ON fully Qualified database it will give delete cascade and base table is not depend on other table we can delete it 
+
+In second case we manually deleted the foreign key and then compiler will give its own foreign key for another table in this case we dont get delete cascade and this time we can delete primary table but at the time of deletion it will throw error cause we have not set author id to null
+
+
+IN third case we put q mark in collection and in foreign key it will give us non delete cascade in this case and foreign key for another table we will get null instead of error
+
+
+Data Source=(localdb)\ProjectModels;Initial Catalog=HR;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False
+
+
+Reverse Engineering
+
+Scaffold-DbContext "Data Source=(localdb)\ProjectModels;Initial Catalog=HR;Integrated Security=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context StudentContext -tables "Students","Grades","Employee" -DataAnnotations
+
+
+
+
+
+
+ONmodel Creating is run only one time whenever code is running on the first time of creating the database and Model builder 
+Onmodelcreatingpartial(modelBuilder)
+It is typically used to define the configuration for the database schema, such as table names, primary keys, indexes, relationships, and more.
+
+The OnModelCreatingPartial method is a partial method that can be found in a generated DbContext class, typically within the context class that inherits from DbContext. The method is usually partial because it allows you to extend the behavior of the OnModelCreating method without modifying the auto-generated code.
+
+
+
+
+
+
+
+
+
+Mvc
+
+Addscope-per user one object
+Add transient- per request object
+Add singleton- only one object(Used for shared resources)
+
+
+
+
+
+
+Task for today in mvc how to do it
+
+Create a mvc application 
+Create poco class customer
+Id name mobile billAmount
+Create a interface Icustomer with method Ienumerable<customer>getallcustomer()
+Create class Service customer / Implements Icustomer
+Create a controller customer 
+Craate constructor and inject interface reference
+Write action method index which will return list of customer
+Generate view
+IN program.cs file call addTransient method
+When you run the application it should display list of customer 
