@@ -1,54 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Assignment2
+using Microsoft.EntityFrameworkCore;
+using WebApplication1.Models;
+
+namespace WebApplication1
 {
-    /*internal class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            string n = Console.ReadLine();
-            string o= Console.ReadLine();
-            int a = int.Parse(n);
-            int b=int .Parse(o);
-            int c = a + b;
-            Console.WriteLine(c);
+            var builder = WebApplication.CreateBuilder(args);
 
-        }
-    }*/
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            string a=Console.ReadLine();
+            // Add services to the container.
+            builder.Services.AddControllers();
+            builder.Services.AddTransient<IEmployeeRepository, SqlEmployeeRepository>();
 
-            //With the help of parse
+            builder.Services.AddDbContext<Appdbcontext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("EmployeeDBConnection")));
 
-            /*bool f=float.TryParse(a, out var b);
-            if(f==true)
+
+            builder.Services.AddControllers();
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
+            var app = builder.Build();
+
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsDevelopment())
             {
-                Console.WriteLine(b);
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
-            else
-            {
-                Console.WriteLine(b);
-            }*/
-            //
 
-            //In case of parse it is used
+            app.UseHttpsRedirection();
+            app.UseAuthentication();
 
-            /*int a1 = int.Parse(a);
-            Console.WriteLine(a1);*/
+            app.UseAuthorization();
 
-            //With the help of null here when we made string null it will return 0 instead of throwing exception
 
-            /*a = null;
-            int a2 = Convert.ToInt32(a);
-            Console.WriteLine(a2);*/
+            app.MapControllers();
+
+            app.Run();
         }
     }
-    
 }
